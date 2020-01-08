@@ -2,6 +2,7 @@ import * as Path from 'path'
 import * as Lint from 'tslint'
 import { findImports, ImportKind } from 'tsutils'
 import * as TS from 'typescript'
+import * as globToRegexp from 'glob-to-regexp'
 
 interface IOptions {
   imports: string[]
@@ -9,7 +10,7 @@ interface IOptions {
 }
 
 export class Rule extends Lint.Rules.AbstractRule {
-  static FAILURE_STRING = 'This import is blacklisted'
+  static FAILURE_STRING = 'Unauthorized import'
 
   apply(sourceFile: TS.SourceFile): Lint.RuleFailure[] {
     return this.applyWithFunction(sourceFile, walk, this
@@ -21,7 +22,12 @@ const walk = (ctx: Lint.WalkContext<IOptions>) => {
   if (ctx.options.imports === undefined) return
 
   const fileName = Path.basename(ctx.sourceFile.fileName)
-  if (ctx.options.ignore.indexOf(fileName) !== -1) return
+
+  for (const ignoreFile of ctx.options.ignore) {
+    const re = globToRegexp(ignoreFile)
+    if (re.test(fileName)) return
+  }
+
 
   for (const name of findImports(ctx.sourceFile, ImportKind.All)) {
     if (ctx.options.imports.indexOf(name.text) === -1) return
