@@ -1,0 +1,15 @@
+.idea
+.vscode
+.DS_Store
+.git
+
+node_modules
+yarn-error.log
+yarn.lock
+package-lock.json
+
+**/test/
+
+tsconfig.json
+tslint.json
+

@@ -1,0 +1,36 @@
+{
+  "name": "tslint-import-blacklist-with-ignore-files",
+  "version": "0.0.1alpha1",
+  "description": "Custom rule for TSLint to blacklist imports",
+  "scripts": {
+    "lint": "tslint --config tslint.json --exclude node_modules **/*.ts",
+    "test": "exit 0",
+    "compile": "tsc",
+    "prepublish": "yarn compile"
+  },
+  "keywords": [
+    "tslint",
+    "custom-tslint-rule",
+    "tslint-import-blacklist"
+  ],
+  "author": "Ariel Henryson<ariel.henryson@gmail.com>",
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arielhenryson/tslint-import-blacklist-with-ignore-files.git"
+  },
+  "devDependencies": {
+    "@types/node": "8.0.53",
+    "ava": "^0.25.0",
+    "ava-ts": "^0.24.3",
+    "concurrently": "^4.1.0",
+    "temp-dir": "^1.0.0",
+    "ts-node": "^6.0.0",
+    "tslint": "5.15.0",
+    "typescript": "3.4.5"
+  },
+  "dependencies": {
+    "tsutils": "^3.17.1"
+  }
+}
