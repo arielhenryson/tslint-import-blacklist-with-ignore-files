@@ -17,8 +17,8 @@ At least one line:
 "import-blacklist-with-ignore-files": [
   true,
   {
-    "imports": ["xxx"]
-    "ignore": ["somefile.ts"],
+    "imports": ["xxx"],
+    "ignore": ["somefile.ts"]
   }
 ]
 ```
