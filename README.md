@@ -18,8 +18,12 @@ Update your `tslint.json` config file, adding the new rules directory and the ne
         "imports": [
             {
                 "name": ["someNPM"],
-                "ignore": []
-            }
+                "ignore": ["main.ts"]
+            },
+            {
+                "name": ["someOtherNPM"],
+                "ignore": ["*.spec.ts"]
+             }
         ]
     }
  ]
