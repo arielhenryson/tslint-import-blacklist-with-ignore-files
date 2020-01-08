@@ -11,14 +11,16 @@ Update your `tslint.json` config file, adding the new rules directory and the ne
 
 
 ### Config Examples
-At least one line:
-
 ```json
-"import-blacklist-with-ignore-files": [
-  true,
-  {
-    "imports": ["xxx"],
-    "ignore": ["somefile.ts"]
-  }
-]
+ "import-blacklist-with-ignore-files": [
+    true,
+    {
+        "imports": [
+            {
+                "name": ["someNPM"],
+                "ignore": []
+            }
+        ]
+    }
+ ]
 ```

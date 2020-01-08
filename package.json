@@ -1,6 +1,6 @@
 {
   "name": "tslint-import-blacklist-with-ignore-files",
-  "version": "0.0.1alpha2",
+  "version": "0.0.1alpha6",
   "description": "Custom rule for TSLint to blacklist imports",
   "scripts": {
     "lint": "tslint --config tslint.json --exclude node_modules **/*.ts",
@@ -25,13 +25,13 @@
     "ava": "^0.25.0",
     "ava-ts": "^0.24.3",
     "concurrently": "^4.1.0",
-    "glob-to-regexp": "^0.4.1",
     "temp-dir": "^1.0.0",
     "ts-node": "^6.0.0",
     "tslint": "5.15.0",
     "typescript": "3.4.5"
   },
   "dependencies": {
+    "glob-to-regexp": "^0.4.1",
     "tsutils": "^3.17.1"
   }
 }

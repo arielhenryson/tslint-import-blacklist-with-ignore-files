@@ -4,10 +4,17 @@ import { findImports, ImportKind } from 'tsutils'
 import * as TS from 'typescript'
 import * as globToRegexp from 'glob-to-regexp'
 
+
 interface IOptions {
-  imports: string[]
+  imports: [IImport]
+}
+
+
+interface IImport {
+  name: string
   ignore: string[]
 }
+
 
 export class Rule extends Lint.Rules.AbstractRule {
   static FAILURE_STRING = 'Unauthorized import'
@@ -23,19 +30,23 @@ const walk = (ctx: Lint.WalkContext<IOptions>) => {
 
   const fileName = Path.basename(ctx.sourceFile.fileName)
 
-  for (const ignoreFile of ctx.options.ignore) {
-    const re = globToRegexp(ignoreFile)
-    if (re.test(fileName)) return
-  }
+
+  for (const importObj of ctx.options.imports) {
+    for (const ignoreFile of importObj.ignore) {
+      const re = globToRegexp(ignoreFile)
+      if (re.test(fileName)) return
+    }
 
 
-  for (const name of findImports(ctx.sourceFile, ImportKind.All)) {
-    if (ctx.options.imports.indexOf(name.text) === -1) return
-
-    ctx.addFailure(
-        name.getStart(ctx.sourceFile) + 1,
-        name.end - 1,
-        Rule.FAILURE_STRING
-    )
+    const imports = findImports(ctx.sourceFile, ImportKind.All)
+    for (const name of imports) {
+      if (importObj.name.indexOf(name.text) !== -1) {
+        ctx.addFailure(
+            name.getStart(ctx.sourceFile) + 1,
+            name.end - 1,
+            Rule.FAILURE_STRING
+        )
+      }
+    }
   }
 }
