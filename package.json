@@ -1,6 +1,6 @@
 {
   "name": "tslint-import-blacklist-with-ignore-files",
-  "version": "0.0.1alpha7",
+  "version": "0.0.1",
   "description": "Custom rule for TSLint to blacklist imports",
   "scripts": {
     "lint": "tslint --config tslint.json --exclude node_modules **/*.ts",
