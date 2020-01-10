@@ -1,6 +1,11 @@
 # tslint-import-blacklist-with-ignore-files
-
 Custom rule for TSLint to blacklist imports but let you ignore specific files
+
+Check out this blog post about this rule
+
+https://medium.com/ariel.henryson/how-to-prevent-import-of-some-modules-with-tslint-4786c9411cd7
+
+
 ## Install
 ```bash
 npm install --save-dev tslint-import-blacklist-with-ignore-files
